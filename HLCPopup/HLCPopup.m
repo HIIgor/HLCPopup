@@ -1,4 +1,4 @@
-// KLCPopup.m
+// HLCPopup.m
 //
 // Created by Jeff Mascia
 // Copyright (c) 2013-2014 Kullect Inc. (http://kullect.com)
@@ -22,28 +22,28 @@
 // THE SOFTWARE.
 
 
-#import "KLCPopup.h"
+#import "HLCPopup.h"
 
 static NSInteger const kAnimationOptionCurveIOS7 = (7 << 16);
 
-KLCPopupLayout KLCPopupLayoutMake(KLCPopupHorizontalLayout horizontal, KLCPopupVerticalLayout vertical)
+HLCPopupLayout HLCPopupLayoutMake(HLCPopupHorizontalLayout horizontal, HLCPopupVerticalLayout vertical)
 {
-  KLCPopupLayout layout;
+  HLCPopupLayout layout;
   layout.horizontal = horizontal;
   layout.vertical = vertical;
   return layout;
 }
 
-const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KLCPopupVerticalLayoutCenter };
+const HLCPopupLayout HLCPopupLayoutCenter = { HLCPopupHorizontalLayoutCenter, HLCPopupVerticalLayoutCenter };
 
 
-@interface NSValue (KLCPopupLayout)
-+ (NSValue*)valueWithKLCPopupLayout:(KLCPopupLayout)layout;
-- (KLCPopupLayout)KLCPopupLayoutValue;
+@interface NSValue (HLCPopupLayout)
++ (NSValue*)valueWithHLCPopupLayout:(HLCPopupLayout)layout;
+- (HLCPopupLayout)HLCPopupLayoutValue;
 @end
 
 
-@interface KLCPopup () {
+@interface HLCPopup () {
   // views
   UIView* _backgroundView;
   UIView* _containerView;
@@ -63,7 +63,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 @end
 
 
-@implementation KLCPopup
+@implementation HLCPopup
 
 @synthesize backgroundView = _backgroundView;
 @synthesize containerView = _containerView;
@@ -98,9 +98,9 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
     self.shouldDismissOnBackgroundTouch = YES;
     self.shouldDismissOnContentTouch = NO;
 
-    self.showType = KLCPopupShowTypeShrinkIn;
-    self.dismissType = KLCPopupDismissTypeShrinkOut;
-    self.maskType = KLCPopupMaskTypeDimmed;
+    self.showType = HLCPopupShowTypeShrinkIn;
+    self.dismissType = HLCPopupDismissTypeShrinkOut;
+    self.maskType = HLCPopupMaskTypeDimmed;
 
     _isBeingShown = NO;
     _isShowing = NO;
@@ -143,7 +143,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
     }
 
     // If no mask, then return nil so touch passes through to underlying views.
-    if (_maskType == KLCPopupMaskTypeNone) {
+    if (_maskType == HLCPopupMaskTypeNone) {
       return nil;
     } else {
       return hitView;
@@ -159,7 +159,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           }
 
           // If no mask, then return nil so touch passes through to underlying views.
-          if (_maskType == KLCPopupMaskTypeNone) {
+          if (_maskType == HLCPopupMaskTypeNone) {
               return nil;
           }
       }
@@ -181,13 +181,13 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 #pragma mark - Class Public
 
 + (instancetype)popupWithContentView:(UIView*)contentView
-                         showType:(KLCPopupShowType)showType
-                      dismissType:(KLCPopupDismissType)dismissType
-                         maskType:(KLCPopupMaskType)maskType
+                         showType:(HLCPopupShowType)showType
+                      dismissType:(HLCPopupDismissType)dismissType
+                         maskType:(HLCPopupMaskType)maskType
          dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
             dismissOnContentTouch:(BOOL)shouldDismissOnContentTouch
 {
-  KLCPopup* popup = [[[self class] alloc] init];
+  HLCPopup* popup = [[[self class] alloc] init];
   popup.contentView = contentView;
   popup.showType = showType;
   popup.dismissType = dismissType;
@@ -201,7 +201,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 + (void)dismissAllPopups {
   NSArray* windows = [[UIApplication sharedApplication] windows];
   for (UIWindow* window in windows) {
-    [window forEachPopupDoBlock:^(KLCPopup *popup) {
+    [window forEachPopupDoBlock:^(HLCPopup *popup) {
       [popup dismiss:NO];
     }];
   }
@@ -211,22 +211,22 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 #pragma mark - Public
 
 - (void)show {
-  [self showWithLayout:KLCPopupLayoutCenter];
+  [self showWithLayout:HLCPopupLayoutCenter];
 }
 
 
-- (void)showWithLayout:(KLCPopupLayout)layout {
+- (void)showWithLayout:(HLCPopupLayout)layout {
   [self showWithLayout:layout duration:0.0];
 }
 
 
 - (void)showWithDuration:(NSTimeInterval)duration {
-  [self showWithLayout:KLCPopupLayoutCenter duration:duration];
+  [self showWithLayout:HLCPopupLayoutCenter duration:duration];
 }
 
 
-- (void)showWithLayout:(KLCPopupLayout)layout duration:(NSTimeInterval)duration {
-  NSDictionary* parameters = @{@"layout" : [NSValue valueWithKLCPopupLayout:layout],
+- (void)showWithLayout:(HLCPopupLayout)layout duration:(NSTimeInterval)duration {
+  NSDictionary* parameters = @{@"layout" : [NSValue valueWithHLCPopupLayout:layout],
                                @"duration" : @(duration)};
   [self showWithParameters:parameters];
 }
@@ -269,7 +269,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
         _backgroundView.alpha = 0.0;
       };
 
-      if (animated && (_showType != KLCPopupShowTypeNone)) {
+      if (animated && (_showType != HLCPopupShowTypeNone)) {
         // Make fade happen faster than motion. Use linear for fades.
         [UIView animateWithDuration:0.15
                               delay:0
@@ -302,7 +302,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
       // Animate content if needed
       if (animated) {
         switch (_dismissType) {
-          case KLCPopupDismissTypeFadeOut: {
+          case HLCPopupDismissTypeFadeOut: {
             [UIView animateWithDuration:0.15
                                   delay:0
                                 options:UIViewAnimationOptionCurveLinear
@@ -312,7 +312,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeGrowOut: {
+          case HLCPopupDismissTypeGrowOut: {
             [UIView animateWithDuration:0.15
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -323,7 +323,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeShrinkOut: {
+          case HLCPopupDismissTypeShrinkOut: {
             [UIView animateWithDuration:0.15
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -334,7 +334,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeSlideOutToTop: {
+          case HLCPopupDismissTypeSlideOutToTop: {
             [UIView animateWithDuration:0.30
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -347,7 +347,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeSlideOutToBottom: {
+          case HLCPopupDismissTypeSlideOutToBottom: {
             [UIView animateWithDuration:0.30
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -360,7 +360,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeSlideOutToLeft: {
+          case HLCPopupDismissTypeSlideOutToLeft: {
             [UIView animateWithDuration:0.30
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -373,7 +373,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeSlideOutToRight: {
+          case HLCPopupDismissTypeSlideOutToRight: {
             [UIView animateWithDuration:0.30
                                   delay:0
                                 options:kAnimationOptionCurveIOS7
@@ -387,7 +387,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeBounceOut: {
+          case HLCPopupDismissTypeBounceOut: {
             [UIView animateWithDuration:bounce1Duration
                                   delay:0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -409,7 +409,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeBounceOutToTop: {
+          case HLCPopupDismissTypeBounceOutToTop: {
             [UIView animateWithDuration:bounce1Duration
                                   delay:0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -434,7 +434,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeBounceOutToBottom: {
+          case HLCPopupDismissTypeBounceOutToBottom: {
             [UIView animateWithDuration:bounce1Duration
                                   delay:0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -459,7 +459,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeBounceOutToLeft: {
+          case HLCPopupDismissTypeBounceOutToLeft: {
             [UIView animateWithDuration:bounce1Duration
                                   delay:0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -483,7 +483,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeBounceOutToRight: {
+          case HLCPopupDismissTypeBounceOutToRight: {
             [UIView animateWithDuration:bounce1Duration
                                   delay:0
                                 options:UIViewAnimationOptionCurveEaseOut
@@ -507,7 +507,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
             break;
           }
 
-          case KLCPopupDismissTypeHangToBottom: {
+          case HLCPopupDismissTypeHangToBottom: {
               // containView 比 contentView 的size大，会导致在顺时针旋转时，向右偏移。
               _containerView.frame = [_containerView convertRect:_contentView.frame toView:self];
 
@@ -572,7 +572,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
         for (UIWindow *window in frontToBackWindows) {
           if (window.windowLevel == UIWindowLevelNormal) {
-              if (self.popupLevel == KLCPopupLevelNormal) { //加到最顶层
+              if (self.popupLevel == HLCPopupLevelNormal) { //加到最顶层
                   [window addSubview:self];
               } else {
                   if (self.popupLevel < window.subviews.count) { //加到指定层
@@ -596,7 +596,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
       // Setup background view
       _backgroundView.alpha = 0.0;
-      if (_maskType == KLCPopupMaskTypeDimmed) {
+      if (_maskType == HLCPopupMaskTypeDimmed) {
         _backgroundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
       } else {
         _backgroundView.backgroundColor = [UIColor clearColor];
@@ -607,7 +607,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
         _backgroundView.alpha = 1.0;
       };
 
-      if (_showType != KLCPopupShowTypeNone) {
+      if (_showType != HLCPopupShowTypeNone) {
         // Make fade happen faster than motion. Use linear for fades.
         [UIView animateWithDuration:0.15
                               delay:0
@@ -708,40 +708,40 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
       else {
 
         NSValue* layoutValue = [parameters valueForKey:@"layout"];
-        KLCPopupLayout layout;
+        HLCPopupLayout layout;
         if (layoutValue != nil) {
-          layout = [layoutValue KLCPopupLayoutValue];
+          layout = [layoutValue HLCPopupLayoutValue];
         } else {
-          layout = KLCPopupLayoutCenter;
+          layout = HLCPopupLayoutCenter;
         }
 
         switch (layout.horizontal) {
 
-          case KLCPopupHorizontalLayoutLeft: {
+          case HLCPopupHorizontalLayoutLeft: {
             finalContainerFrame.origin.x = 0.0;
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleRightMargin;
             break;
           }
 
-          case KLCPopupHorizontalLayoutLeftOfCenter: {
+          case HLCPopupHorizontalLayoutLeftOfCenter: {
             finalContainerFrame.origin.x = floorf(CGRectGetWidth(self.bounds)/3.0 - CGRectGetWidth(containerFrame)/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
             break;
           }
 
-          case KLCPopupHorizontalLayoutCenter: {
+          case HLCPopupHorizontalLayoutCenter: {
             finalContainerFrame.origin.x = floorf((CGRectGetWidth(self.bounds) - CGRectGetWidth(containerFrame))/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
             break;
           }
 
-          case KLCPopupHorizontalLayoutRightOfCenter: {
+          case HLCPopupHorizontalLayoutRightOfCenter: {
             finalContainerFrame.origin.x = floorf(CGRectGetWidth(self.bounds)*2.0/3.0 - CGRectGetWidth(containerFrame)/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
             break;
           }
 
-          case KLCPopupHorizontalLayoutRight: {
+          case HLCPopupHorizontalLayoutRight: {
             finalContainerFrame.origin.x = CGRectGetWidth(self.bounds) - CGRectGetWidth(containerFrame);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleLeftMargin;
             break;
@@ -754,31 +754,31 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
         // Vertical
         switch (layout.vertical) {
 
-          case KLCPopupVerticalLayoutTop: {
+          case HLCPopupVerticalLayoutTop: {
             finalContainerFrame.origin.y = 0;
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleBottomMargin;
             break;
           }
 
-          case KLCPopupVerticalLayoutAboveCenter: {
+          case HLCPopupVerticalLayoutAboveCenter: {
             finalContainerFrame.origin.y = floorf(CGRectGetHeight(self.bounds)/3.0 - CGRectGetHeight(containerFrame)/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
             break;
           }
 
-          case KLCPopupVerticalLayoutCenter: {
+          case HLCPopupVerticalLayoutCenter: {
             finalContainerFrame.origin.y = floorf((CGRectGetHeight(self.bounds) - CGRectGetHeight(containerFrame))/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
             break;
           }
 
-          case KLCPopupVerticalLayoutBelowCenter: {
+          case HLCPopupVerticalLayoutBelowCenter: {
             finalContainerFrame.origin.y = floorf(CGRectGetHeight(self.bounds)*2.0/3.0 - CGRectGetHeight(containerFrame)/2.0);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
             break;
           }
 
-          case KLCPopupVerticalLayoutBottom: {
+          case HLCPopupVerticalLayoutBottom: {
             finalContainerFrame.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(containerFrame);
             containerAutoresizingMask = containerAutoresizingMask | UIViewAutoresizingFlexibleTopMargin;
             break;
@@ -795,7 +795,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
       // Animate content if needed
       switch (_showType) {
-        case KLCPopupShowTypeFadeIn: {
+        case HLCPopupShowTypeFadeIn: {
 
           _containerView.alpha = 0.0;
           _containerView.transform = CGAffineTransformIdentity;
@@ -812,7 +812,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeGrowIn: {
+        case HLCPopupShowTypeGrowIn: {
 
           _containerView.alpha = 0.0;
           // set frame before transform here...
@@ -834,7 +834,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeShrinkIn: {
+        case HLCPopupShowTypeShrinkIn: {
           _containerView.alpha = 0.0;
           // set frame before transform here...
           CGRect startFrame = finalContainerFrame;
@@ -854,7 +854,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeSlideInFromTop: {
+        case HLCPopupShowTypeSlideInFromTop: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -871,7 +871,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeSlideInFromBottom: {
+        case HLCPopupShowTypeSlideInFromBottom: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -888,7 +888,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeSlideInFromLeft: {
+        case HLCPopupShowTypeSlideInFromLeft: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -905,7 +905,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeSlideInFromRight: {
+        case HLCPopupShowTypeSlideInFromRight: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -923,7 +923,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeBounceIn: {
+        case HLCPopupShowTypeBounceIn: {
           _containerView.alpha = 0.0;
           // set frame before transform here...
           CGRect startFrame = finalContainerFrame;
@@ -944,7 +944,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeBounceInFromTop: {
+        case HLCPopupShowTypeBounceInFromTop: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -963,7 +963,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeBounceInFromBottom: {
+        case HLCPopupShowTypeBounceInFromBottom: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -982,7 +982,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeBounceInFromLeft: {
+        case HLCPopupShowTypeBounceInFromLeft: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -1001,7 +1001,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeBounceInFromRight: {
+        case HLCPopupShowTypeBounceInFromRight: {
           _containerView.alpha = 1.0;
           _containerView.transform = CGAffineTransformIdentity;
           CGRect startFrame = finalContainerFrame;
@@ -1020,7 +1020,7 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
           break;
         }
 
-        case KLCPopupShowTypeHangFromTop: {
+        case HLCPopupShowTypeHangFromTop: {
             _containerView.alpha = 1.0;
             _containerView.transform = CGAffineTransformIdentity;
 
@@ -1132,15 +1132,15 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
 #pragma mark - Categories
 
-@implementation UIView(KLCPopup)
+@implementation UIView(HLCPopup)
 
 
-- (void)forEachPopupDoBlock:(void (^)(KLCPopup* popup))block {
+- (void)forEachPopupDoBlock:(void (^)(HLCPopup* popup))block {
   for (UIView *subview in self.subviews)
   {
-    if ([subview isKindOfClass:[KLCPopup class]])
+    if ([subview isKindOfClass:[HLCPopup class]])
     {
-      block((KLCPopup *)subview);
+      block((HLCPopup *)subview);
     } else {
       [subview forEachPopupDoBlock:block];
     }
@@ -1150,11 +1150,11 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
 - (void)dismissPresentingPopup {
 
-  // Iterate over superviews until you find a KLCPopup and dismiss it, then gtfo
+  // Iterate over superviews until you find a HLCPopup and dismiss it, then gtfo
   UIView* view = self;
   while (view != nil) {
-    if ([view isKindOfClass:[KLCPopup class]]) {
-      [(KLCPopup*)view dismiss:YES];
+    if ([view isKindOfClass:[HLCPopup class]]) {
+      [(HLCPopup*)view dismiss:YES];
       break;
     }
     view = [view superview];
@@ -1166,16 +1166,16 @@ const KLCPopupLayout KLCPopupLayoutCenter = { KLCPopupHorizontalLayoutCenter, KL
 
 
 
-@implementation NSValue (KLCPopupLayout)
+@implementation NSValue (HLCPopupLayout)
 
-+ (NSValue *)valueWithKLCPopupLayout:(KLCPopupLayout)layout
++ (NSValue *)valueWithHLCPopupLayout:(HLCPopupLayout)layout
 {
-  return [NSValue valueWithBytes:&layout objCType:@encode(KLCPopupLayout)];
+  return [NSValue valueWithBytes:&layout objCType:@encode(HLCPopupLayout)];
 }
 
-- (KLCPopupLayout)KLCPopupLayoutValue
+- (HLCPopupLayout)HLCPopupLayoutValue
 {
-  KLCPopupLayout layout;
+  HLCPopupLayout layout;
 
   [self getValue:&layout];
 
