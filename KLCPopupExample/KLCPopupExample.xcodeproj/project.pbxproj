@@ -21,7 +21,7 @@
 		1FA76AD6195893080075A8E4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA76AB5195893080075A8E4 /* UIKit.framework */; };
 		1FA76ADE195893080075A8E4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FA76ADC195893080075A8E4 /* InfoPlist.strings */; };
 		1FA76AE0195893080075A8E4 /* KLCPopupExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA76ADF195893080075A8E4 /* KLCPopupExampleTests.m */; };
-		250063E41F6CF7230094F1E9 /* KLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 250063E31F6CF7230094F1E9 /* KLCPopup.m */; };
+		250063E81F6D01360094F1E9 /* HLCPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 250063E71F6D01360094F1E9 /* HLCPopup.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		1FA76ADB195893080075A8E4 /* KLCPopupExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KLCPopupExampleTests-Info.plist"; sourceTree = "<group>"; };
 		1FA76ADD195893080075A8E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1FA76ADF195893080075A8E4 /* KLCPopupExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KLCPopupExampleTests.m; sourceTree = "<group>"; };
-		250063E21F6CF7230094F1E9 /* KLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLCPopup.h; sourceTree = "<group>"; };
-		250063E31F6CF7230094F1E9 /* KLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLCPopup.m; sourceTree = "<group>"; };
+		250063E61F6D01360094F1E9 /* HLCPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLCPopup.h; sourceTree = "<group>"; };
+		250063E71F6D01360094F1E9 /* HLCPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLCPopup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 		1FA76AA5195893080075A8E4 = {
 			isa = PBXGroup;
 			children = (
-				250063E11F6CF7230094F1E9 /* HLCPopup */,
+				250063E51F6D01360094F1E9 /* HLCPopup */,
 				1FA76AB7195893080075A8E4 /* KLCPopupExample */,
 				1FA76AD9195893080075A8E4 /* KLCPopupExampleTests */,
 				1FA76AB0195893080075A8E4 /* Frameworks */,
@@ -157,11 +157,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		250063E11F6CF7230094F1E9 /* HLCPopup */ = {
+		250063E51F6D01360094F1E9 /* HLCPopup */ = {
 			isa = PBXGroup;
 			children = (
-				250063E21F6CF7230094F1E9 /* KLCPopup.h */,
-				250063E31F6CF7230094F1E9 /* KLCPopup.m */,
+				250063E61F6D01360094F1E9 /* HLCPopup.h */,
+				250063E71F6D01360094F1E9 /* HLCPopup.m */,
 			);
 			path = HLCPopup;
 			sourceTree = "<group>";
@@ -263,10 +263,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				250063E81F6D01360094F1E9 /* HLCPopup.m in Sources */,
 				1FA76ACB195893080075A8E4 /* ViewController.m in Sources */,
 				1FA76ABE195893080075A8E4 /* main.m in Sources */,
 				1FA76AC2195893080075A8E4 /* AppDelegate.m in Sources */,
-				250063E41F6CF7230094F1E9 /* KLCPopup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

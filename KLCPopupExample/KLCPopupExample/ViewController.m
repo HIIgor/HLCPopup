@@ -1,6 +1,6 @@
 //
 // ViewController.m
-// KLCPopupExample
+// HLCPopupExample
 //
 // Copyright (c) 2014 Jeff Mascia (http://jeffmascia.com/)
 //
@@ -23,7 +23,7 @@
 // THE SOFTWARE.
 
 #import "ViewController.h"
-#import "KLCPopup.h"
+#import "HLCPopup.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -91,13 +91,13 @@ typedef NS_ENUM(NSInteger, CellType) {
 @end
 
 
-@interface UIColor (KLCPopupExample)
-+ (UIColor*)klcLightGreenColor;
-+ (UIColor*)klcGreenColor;
+@interface UIColor (HLCPopupExample)
++ (UIColor*)HLCLightGreenColor;
++ (UIColor*)HLCGreenColor;
 @end
 
 
-@interface UIView (KLCPopupExample)
+@interface UIView (HLCPopupExample)
 - (UITableViewCell*)parentCell;
 @end
 
@@ -111,7 +111,7 @@ typedef NS_ENUM(NSInteger, CellType) {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     
-    self.title = @"KLCPopup Example";
+    self.title = @"HLCPopup Example";
     
     // MAIN LIST
     _fields = @[@(FieldTagHorizontalLayout),
@@ -133,100 +133,100 @@ typedef NS_ENUM(NSInteger, CellType) {
                         @(FieldTagTimedDismiss) : @"Dismiss after delay"};
     
     // FIELD SUB-LISTS
-    _horizontalLayouts = @[@(KLCPopupHorizontalLayoutLeft),
-                           @(KLCPopupHorizontalLayoutLeftOfCenter),
-                           @(KLCPopupHorizontalLayoutCenter),
-                           @(KLCPopupHorizontalLayoutRightOfCenter),
-                           @(KLCPopupHorizontalLayoutRight)];
+    _horizontalLayouts = @[@(HLCPopupHorizontalLayoutLeft),
+                           @(HLCPopupHorizontalLayoutLeftOfCenter),
+                           @(HLCPopupHorizontalLayoutCenter),
+                           @(HLCPopupHorizontalLayoutRightOfCenter),
+                           @(HLCPopupHorizontalLayoutRight)];
     
-    _namesForHorizontalLayouts = @{@(KLCPopupHorizontalLayoutLeft) : @"Left",
-                                   @(KLCPopupHorizontalLayoutLeftOfCenter) : @"Left of Center",
-                                   @(KLCPopupHorizontalLayoutCenter) : @"Center",
-                                   @(KLCPopupHorizontalLayoutRightOfCenter) : @"Right of Center",
-                                   @(KLCPopupHorizontalLayoutRight) : @"Right"};
+    _namesForHorizontalLayouts = @{@(HLCPopupHorizontalLayoutLeft) : @"Left",
+                                   @(HLCPopupHorizontalLayoutLeftOfCenter) : @"Left of Center",
+                                   @(HLCPopupHorizontalLayoutCenter) : @"Center",
+                                   @(HLCPopupHorizontalLayoutRightOfCenter) : @"Right of Center",
+                                   @(HLCPopupHorizontalLayoutRight) : @"Right"};
     
-    _verticalLayouts = @[@(KLCPopupVerticalLayoutTop),
-                         @(KLCPopupVerticalLayoutAboveCenter),
-                         @(KLCPopupVerticalLayoutCenter),
-                         @(KLCPopupVerticalLayoutBelowCenter),
-                         @(KLCPopupVerticalLayoutBottom)];
+    _verticalLayouts = @[@(HLCPopupVerticalLayoutTop),
+                         @(HLCPopupVerticalLayoutAboveCenter),
+                         @(HLCPopupVerticalLayoutCenter),
+                         @(HLCPopupVerticalLayoutBelowCenter),
+                         @(HLCPopupVerticalLayoutBottom)];
     
-    _namesForVerticalLayouts = @{@(KLCPopupVerticalLayoutTop) : @"Top",
-                                 @(KLCPopupVerticalLayoutAboveCenter) : @"Above Center",
-                                 @(KLCPopupVerticalLayoutCenter) : @"Center",
-                                 @(KLCPopupVerticalLayoutBelowCenter) : @"Below Center",
-                                 @(KLCPopupVerticalLayoutBottom) : @"Bottom"};
+    _namesForVerticalLayouts = @{@(HLCPopupVerticalLayoutTop) : @"Top",
+                                 @(HLCPopupVerticalLayoutAboveCenter) : @"Above Center",
+                                 @(HLCPopupVerticalLayoutCenter) : @"Center",
+                                 @(HLCPopupVerticalLayoutBelowCenter) : @"Below Center",
+                                 @(HLCPopupVerticalLayoutBottom) : @"Bottom"};
     
-    _maskTypes = @[@(KLCPopupMaskTypeNone),
-                   @(KLCPopupMaskTypeClear),
-                   @(KLCPopupMaskTypeDimmed)];
+    _maskTypes = @[@(HLCPopupMaskTypeNone),
+                   @(HLCPopupMaskTypeClear),
+                   @(HLCPopupMaskTypeDimmed)];
     
-    _namesForMaskTypes = @{@(KLCPopupMaskTypeNone) : @"None",
-                           @(KLCPopupMaskTypeClear) : @"Clear",
-                           @(KLCPopupMaskTypeDimmed) : @"Dimmed"};
+    _namesForMaskTypes = @{@(HLCPopupMaskTypeNone) : @"None",
+                           @(HLCPopupMaskTypeClear) : @"Clear",
+                           @(HLCPopupMaskTypeDimmed) : @"Dimmed"};
     
-    _showTypes = @[@(KLCPopupShowTypeNone),
-                   @(KLCPopupShowTypeFadeIn),
-                   @(KLCPopupShowTypeGrowIn),
-                   @(KLCPopupShowTypeShrinkIn),
-                   @(KLCPopupShowTypeSlideInFromTop),
-                   @(KLCPopupShowTypeSlideInFromBottom),
-                   @(KLCPopupShowTypeSlideInFromLeft),
-                   @(KLCPopupShowTypeSlideInFromRight),
-                   @(KLCPopupShowTypeBounceIn),
-                   @(KLCPopupShowTypeBounceInFromTop),
-                   @(KLCPopupShowTypeBounceInFromBottom),
-                   @(KLCPopupShowTypeBounceInFromLeft),
-                   @(KLCPopupShowTypeBounceInFromRight)];
+    _showTypes = @[@(HLCPopupShowTypeNone),
+                   @(HLCPopupShowTypeFadeIn),
+                   @(HLCPopupShowTypeGrowIn),
+                   @(HLCPopupShowTypeShrinkIn),
+                   @(HLCPopupShowTypeSlideInFromTop),
+                   @(HLCPopupShowTypeSlideInFromBottom),
+                   @(HLCPopupShowTypeSlideInFromLeft),
+                   @(HLCPopupShowTypeSlideInFromRight),
+                   @(HLCPopupShowTypeBounceIn),
+                   @(HLCPopupShowTypeBounceInFromTop),
+                   @(HLCPopupShowTypeBounceInFromBottom),
+                   @(HLCPopupShowTypeBounceInFromLeft),
+                   @(HLCPopupShowTypeBounceInFromRight)];
     
-    _namesForShowTypes = @{@(KLCPopupShowTypeNone) : @"None",
-                           @(KLCPopupShowTypeFadeIn) : @"Fade in",
-                           @(KLCPopupShowTypeGrowIn) : @"Grow in",
-                           @(KLCPopupShowTypeShrinkIn) : @"Shrink in",
-                           @(KLCPopupShowTypeSlideInFromTop) : @"Slide from Top",
-                           @(KLCPopupShowTypeSlideInFromBottom) : @"Slide from Bottom",
-                           @(KLCPopupShowTypeSlideInFromLeft) : @"Slide from Left",
-                           @(KLCPopupShowTypeSlideInFromRight) : @"Slide from Right",
-                           @(KLCPopupShowTypeBounceIn) : @"Bounce in",
-                           @(KLCPopupShowTypeBounceInFromTop) : @"Bounce from Top",
-                           @(KLCPopupShowTypeBounceInFromBottom) : @"Bounce from Bottom",
-                           @(KLCPopupShowTypeBounceInFromLeft) : @"Bounce from Left",
-                           @(KLCPopupShowTypeBounceInFromRight) : @"Bounce from Right"};
+    _namesForShowTypes = @{@(HLCPopupShowTypeNone) : @"None",
+                           @(HLCPopupShowTypeFadeIn) : @"Fade in",
+                           @(HLCPopupShowTypeGrowIn) : @"Grow in",
+                           @(HLCPopupShowTypeShrinkIn) : @"Shrink in",
+                           @(HLCPopupShowTypeSlideInFromTop) : @"Slide from Top",
+                           @(HLCPopupShowTypeSlideInFromBottom) : @"Slide from Bottom",
+                           @(HLCPopupShowTypeSlideInFromLeft) : @"Slide from Left",
+                           @(HLCPopupShowTypeSlideInFromRight) : @"Slide from Right",
+                           @(HLCPopupShowTypeBounceIn) : @"Bounce in",
+                           @(HLCPopupShowTypeBounceInFromTop) : @"Bounce from Top",
+                           @(HLCPopupShowTypeBounceInFromBottom) : @"Bounce from Bottom",
+                           @(HLCPopupShowTypeBounceInFromLeft) : @"Bounce from Left",
+                           @(HLCPopupShowTypeBounceInFromRight) : @"Bounce from Right"};
     
-    _dismissTypes = @[@(KLCPopupDismissTypeNone),
-                      @(KLCPopupDismissTypeFadeOut),
-                      @(KLCPopupDismissTypeGrowOut),
-                      @(KLCPopupDismissTypeShrinkOut),
-                      @(KLCPopupDismissTypeSlideOutToTop),
-                      @(KLCPopupDismissTypeSlideOutToBottom),
-                      @(KLCPopupDismissTypeSlideOutToLeft),
-                      @(KLCPopupDismissTypeSlideOutToRight),
-                      @(KLCPopupDismissTypeBounceOut),
-                      @(KLCPopupDismissTypeBounceOutToTop),
-                      @(KLCPopupDismissTypeBounceOutToBottom),
-                      @(KLCPopupDismissTypeBounceOutToLeft),
-                      @(KLCPopupDismissTypeBounceOutToRight)];
+    _dismissTypes = @[@(HLCPopupDismissTypeNone),
+                      @(HLCPopupDismissTypeFadeOut),
+                      @(HLCPopupDismissTypeGrowOut),
+                      @(HLCPopupDismissTypeShrinkOut),
+                      @(HLCPopupDismissTypeSlideOutToTop),
+                      @(HLCPopupDismissTypeSlideOutToBottom),
+                      @(HLCPopupDismissTypeSlideOutToLeft),
+                      @(HLCPopupDismissTypeSlideOutToRight),
+                      @(HLCPopupDismissTypeBounceOut),
+                      @(HLCPopupDismissTypeBounceOutToTop),
+                      @(HLCPopupDismissTypeBounceOutToBottom),
+                      @(HLCPopupDismissTypeBounceOutToLeft),
+                      @(HLCPopupDismissTypeBounceOutToRight)];
     
-    _namesForDismissTypes = @{@(KLCPopupDismissTypeNone) : @"None",
-                              @(KLCPopupDismissTypeFadeOut) : @"Fade out",
-                              @(KLCPopupDismissTypeGrowOut) : @"Grow out",
-                              @(KLCPopupDismissTypeShrinkOut) : @"Shrink out",
-                              @(KLCPopupDismissTypeSlideOutToTop) : @"Slide to Top",
-                              @(KLCPopupDismissTypeSlideOutToBottom) : @"Slide to Bottom",
-                              @(KLCPopupDismissTypeSlideOutToLeft) : @"Slide to Left",
-                              @(KLCPopupDismissTypeSlideOutToRight) : @"Slide to Right",
-                              @(KLCPopupDismissTypeBounceOut) : @"Bounce out",
-                              @(KLCPopupDismissTypeBounceOutToTop) : @"Bounce to Top",
-                              @(KLCPopupDismissTypeBounceOutToBottom) : @"Bounce to Bottom",
-                              @(KLCPopupDismissTypeBounceOutToLeft) : @"Bounce to Left",
-                              @(KLCPopupDismissTypeBounceOutToRight) : @"Bounce to Right"};
+    _namesForDismissTypes = @{@(HLCPopupDismissTypeNone) : @"None",
+                              @(HLCPopupDismissTypeFadeOut) : @"Fade out",
+                              @(HLCPopupDismissTypeGrowOut) : @"Grow out",
+                              @(HLCPopupDismissTypeShrinkOut) : @"Shrink out",
+                              @(HLCPopupDismissTypeSlideOutToTop) : @"Slide to Top",
+                              @(HLCPopupDismissTypeSlideOutToBottom) : @"Slide to Bottom",
+                              @(HLCPopupDismissTypeSlideOutToLeft) : @"Slide to Left",
+                              @(HLCPopupDismissTypeSlideOutToRight) : @"Slide to Right",
+                              @(HLCPopupDismissTypeBounceOut) : @"Bounce out",
+                              @(HLCPopupDismissTypeBounceOutToTop) : @"Bounce to Top",
+                              @(HLCPopupDismissTypeBounceOutToBottom) : @"Bounce to Bottom",
+                              @(HLCPopupDismissTypeBounceOutToLeft) : @"Bounce to Left",
+                              @(HLCPopupDismissTypeBounceOutToRight) : @"Bounce to Right"};
     
     // DEFAULTS
-    _selectedRowInHorizontalField = [_horizontalLayouts indexOfObject:@(KLCPopupHorizontalLayoutCenter)];
-    _selectedRowInVerticalField = [_verticalLayouts indexOfObject:@(KLCPopupVerticalLayoutCenter)];
-    _selectedRowInMaskField = [_maskTypes indexOfObject:@(KLCPopupMaskTypeDimmed)];
-    _selectedRowInShowField = [_showTypes indexOfObject:@(KLCPopupShowTypeBounceInFromTop)];
-    _selectedRowInDismissField = [_dismissTypes indexOfObject:@(KLCPopupDismissTypeBounceOutToBottom)];
+    _selectedRowInHorizontalField = [_horizontalLayouts indexOfObject:@(HLCPopupHorizontalLayoutCenter)];
+    _selectedRowInVerticalField = [_verticalLayouts indexOfObject:@(HLCPopupVerticalLayoutCenter)];
+    _selectedRowInMaskField = [_maskTypes indexOfObject:@(HLCPopupMaskTypeDimmed)];
+    _selectedRowInShowField = [_showTypes indexOfObject:@(HLCPopupShowTypeBounceInFromTop)];
+    _selectedRowInDismissField = [_dismissTypes indexOfObject:@(HLCPopupDismissTypeBounceOutToBottom)];
     _shouldDismissOnBackgroundTouch = YES;
     _shouldDismissOnContentTouch = NO;
     _shouldDismissAfterDelay = NO;
@@ -342,7 +342,7 @@ typedef NS_ENUM(NSInteger, CellType) {
   // Generate content view to present
   UIView* contentView = [[UIView alloc] init];
   contentView.translatesAutoresizingMaskIntoConstraints = NO;
-  contentView.backgroundColor = [UIColor klcLightGreenColor];
+  contentView.backgroundColor = [UIColor HLCLightGreenColor];
   contentView.layer.cornerRadius = 12.0;
   
   UILabel* dismissLabel = [[UILabel alloc] init];
@@ -355,7 +355,7 @@ typedef NS_ENUM(NSInteger, CellType) {
   UIButton* dismissButton = [UIButton buttonWithType:UIButtonTypeCustom];
   dismissButton.translatesAutoresizingMaskIntoConstraints = NO;
   dismissButton.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 10, 20);
-  dismissButton.backgroundColor = [UIColor klcGreenColor];
+  dismissButton.backgroundColor = [UIColor HLCGreenColor];
   [dismissButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
   [dismissButton setTitleColor:[[dismissButton titleColorForState:UIControlStateNormal] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
   dismissButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
@@ -381,13 +381,13 @@ typedef NS_ENUM(NSInteger, CellType) {
                                              views:views]];
   
   // Show in popup
-  KLCPopupLayout layout = KLCPopupLayoutMake((KLCPopupHorizontalLayout)[self valueForRow:_selectedRowInHorizontalField inFieldWithTag:FieldTagHorizontalLayout],
-                                             (KLCPopupVerticalLayout)[self valueForRow:_selectedRowInVerticalField inFieldWithTag:FieldTagVerticalLayout]);
+  HLCPopupLayout layout = HLCPopupLayoutMake((HLCPopupHorizontalLayout)[self valueForRow:_selectedRowInHorizontalField inFieldWithTag:FieldTagHorizontalLayout],
+                                             (HLCPopupVerticalLayout)[self valueForRow:_selectedRowInVerticalField inFieldWithTag:FieldTagVerticalLayout]);
   
-  KLCPopup* popup = [KLCPopup popupWithContentView:contentView
-                                          showType:(KLCPopupShowType)[self valueForRow:_selectedRowInShowField inFieldWithTag:FieldTagShowType]
-                                       dismissType:(KLCPopupDismissType)[self valueForRow:_selectedRowInDismissField inFieldWithTag:FieldTagDismissType]
-                                          maskType:(KLCPopupMaskType)[self valueForRow:_selectedRowInMaskField inFieldWithTag:FieldTagMaskType]
+  HLCPopup* popup = [HLCPopup popupWithContentView:contentView
+                                          showType:(HLCPopupShowType)[self valueForRow:_selectedRowInShowField inFieldWithTag:FieldTagShowType]
+                                       dismissType:(HLCPopupDismissType)[self valueForRow:_selectedRowInDismissField inFieldWithTag:FieldTagDismissType]
+                                          maskType:(HLCPopupMaskType)[self valueForRow:_selectedRowInMaskField inFieldWithTag:FieldTagMaskType]
                           dismissOnBackgroundTouch:_shouldDismissOnBackgroundTouch
                              dismissOnContentTouch:_shouldDismissOnContentTouch];
   
@@ -841,13 +841,13 @@ typedef NS_ENUM(NSInteger, CellType) {
 
 #pragma mark - Categories
 
-@implementation UIColor (KLCPopupExample)
+@implementation UIColor (HLCPopupExample)
 
-+ (UIColor*)klcLightGreenColor {
++ (UIColor*)HLCLightGreenColor {
   return [UIColor colorWithRed:(184.0/255.0) green:(233.0/255.0) blue:(122.0/255.0) alpha:1.0];
 }
 
-+ (UIColor*)klcGreenColor {
++ (UIColor*)HLCGreenColor {
   return [UIColor colorWithRed:(0.0/255.0) green:(204.0/255.0) blue:(134.0/255.0) alpha:1.0];
 }
 
@@ -855,7 +855,7 @@ typedef NS_ENUM(NSInteger, CellType) {
 
 
 
-@implementation UIView (KLCPopupExample)
+@implementation UIView (HLCPopupExample)
 
 - (UITableViewCell*)parentCell {
   

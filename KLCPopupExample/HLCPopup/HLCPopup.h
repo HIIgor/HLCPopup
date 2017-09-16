@@ -1,4 +1,4 @@
-// KLCPopup.h
+// HLCPopup.h
 //
 // Created by Jeff Mascia
 // Copyright (c) 2013-2014 Kullect Inc. (http://kullect.com)
@@ -22,91 +22,91 @@
 // THE SOFTWARE.
 
 
-// KLCPopupShowType: Controls how the popup will be presented.
-typedef NS_ENUM (NSInteger, KLCPopupShowType) {
-    KLCPopupShowTypeNone = 0,
-    KLCPopupShowTypeFadeIn,
-    KLCPopupShowTypeGrowIn,
-    KLCPopupShowTypeShrinkIn,
-    KLCPopupShowTypeSlideInFromTop,
-    KLCPopupShowTypeSlideInFromBottom,
-    KLCPopupShowTypeSlideInFromLeft,
-    KLCPopupShowTypeSlideInFromRight,
-    KLCPopupShowTypeBounceIn,
-    KLCPopupShowTypeBounceInFromTop,
-    KLCPopupShowTypeBounceInFromBottom,
-    KLCPopupShowTypeBounceInFromLeft,
-    KLCPopupShowTypeBounceInFromRight,
-    KLCPopupShowTypeHangFromTop,
+// HLCPopupShowType: Controls how the popup will be presented.
+typedef NS_ENUM (NSInteger, HLCPopupShowType) {
+    HLCPopupShowTypeNone = 0,
+    HLCPopupShowTypeFadeIn,
+    HLCPopupShowTypeGrowIn,
+    HLCPopupShowTypeShrinkIn,
+    HLCPopupShowTypeSlideInFromTop,
+    HLCPopupShowTypeSlideInFromBottom,
+    HLCPopupShowTypeSlideInFromLeft,
+    HLCPopupShowTypeSlideInFromRight,
+    HLCPopupShowTypeBounceIn,
+    HLCPopupShowTypeBounceInFromTop,
+    HLCPopupShowTypeBounceInFromBottom,
+    HLCPopupShowTypeBounceInFromLeft,
+    HLCPopupShowTypeBounceInFromRight,
+    HLCPopupShowTypeHangFromTop,
 };
 
-// KLCPopupDismissType: Controls how the popup will be dismissed.
-typedef NS_ENUM (NSInteger, KLCPopupDismissType) {
-    KLCPopupDismissTypeNone = 0,
-    KLCPopupDismissTypeFadeOut,
-    KLCPopupDismissTypeGrowOut,
-    KLCPopupDismissTypeShrinkOut,
-    KLCPopupDismissTypeSlideOutToTop,
-    KLCPopupDismissTypeSlideOutToBottom,
-    KLCPopupDismissTypeSlideOutToLeft,
-    KLCPopupDismissTypeSlideOutToRight,
-    KLCPopupDismissTypeBounceOut,
-    KLCPopupDismissTypeBounceOutToTop,
-    KLCPopupDismissTypeBounceOutToBottom,
-    KLCPopupDismissTypeBounceOutToLeft,
-    KLCPopupDismissTypeBounceOutToRight,
-    KLCPopupDismissTypeHangToBottom,
+// HLCPopupDismissType: Controls how the popup will be dismissed.
+typedef NS_ENUM (NSInteger, HLCPopupDismissType) {
+    HLCPopupDismissTypeNone = 0,
+    HLCPopupDismissTypeFadeOut,
+    HLCPopupDismissTypeGrowOut,
+    HLCPopupDismissTypeShrinkOut,
+    HLCPopupDismissTypeSlideOutToTop,
+    HLCPopupDismissTypeSlideOutToBottom,
+    HLCPopupDismissTypeSlideOutToLeft,
+    HLCPopupDismissTypeSlideOutToRight,
+    HLCPopupDismissTypeBounceOut,
+    HLCPopupDismissTypeBounceOutToTop,
+    HLCPopupDismissTypeBounceOutToBottom,
+    HLCPopupDismissTypeBounceOutToLeft,
+    HLCPopupDismissTypeBounceOutToRight,
+    HLCPopupDismissTypeHangToBottom,
 };
 
 
 
-// KLCPopupHorizontalLayout: Controls where the popup will come to rest horizontally.
-typedef NS_ENUM (NSInteger, KLCPopupHorizontalLayout) {
-    KLCPopupHorizontalLayoutCustom = 0,
-    KLCPopupHorizontalLayoutLeft,
-    KLCPopupHorizontalLayoutLeftOfCenter,
-    KLCPopupHorizontalLayoutCenter,
-    KLCPopupHorizontalLayoutRightOfCenter,
-    KLCPopupHorizontalLayoutRight,
+// HLCPopupHorizontalLayout: Controls where the popup will come to rest horizontally.
+typedef NS_ENUM (NSInteger, HLCPopupHorizontalLayout) {
+    HLCPopupHorizontalLayoutCustom = 0,
+    HLCPopupHorizontalLayoutLeft,
+    HLCPopupHorizontalLayoutLeftOfCenter,
+    HLCPopupHorizontalLayoutCenter,
+    HLCPopupHorizontalLayoutRightOfCenter,
+    HLCPopupHorizontalLayoutRight,
 };
 
-// KLCPopupVerticalLayout: Controls where the popup will come to rest vertically.
-typedef NS_ENUM (NSInteger, KLCPopupVerticalLayout) {
-    KLCPopupVerticalLayoutCustom = 0,
-    KLCPopupVerticalLayoutTop,
-    KLCPopupVerticalLayoutAboveCenter,
-    KLCPopupVerticalLayoutCenter,
-    KLCPopupVerticalLayoutBelowCenter,
-    KLCPopupVerticalLayoutBottom,
+// HLCPopupVerticalLayout: Controls where the popup will come to rest vertically.
+typedef NS_ENUM (NSInteger, HLCPopupVerticalLayout) {
+    HLCPopupVerticalLayoutCustom = 0,
+    HLCPopupVerticalLayoutTop,
+    HLCPopupVerticalLayoutAboveCenter,
+    HLCPopupVerticalLayoutCenter,
+    HLCPopupVerticalLayoutBelowCenter,
+    HLCPopupVerticalLayoutBottom,
 };
 
-// KLCPopupMaskType
-typedef NS_ENUM (NSInteger, KLCPopupMaskType) {
-    KLCPopupMaskTypeNone = 0,     // Allow interaction with underlying views.
-    KLCPopupMaskTypeClear,     // Don't allow interaction with underlying views.
-    KLCPopupMaskTypeDimmed,     // Don't allow interaction with underlying views, dim background.
+// HLCPopupMaskType
+typedef NS_ENUM (NSInteger, HLCPopupMaskType) {
+    HLCPopupMaskTypeNone = 0,     // Allow interaction with underlying views.
+    HLCPopupMaskTypeClear,     // Don't allow interaction with underlying views.
+    HLCPopupMaskTypeDimmed,     // Don't allow interaction with underlying views, dim background.
 };
 
-//Popup出现的层级，值越大，层级越低；KLCPopupLevelNormal表示出现在最顶层
-typedef NS_ENUM(NSUInteger, KLCPopupLevel) {
-    KLCPopupLevelNormal = 0,
-    KLCPopupLevelLow
+//Popup出现的层级，值越大，层级越低；HLCPopupLevelNormal表示出现在最顶层
+typedef NS_ENUM(NSUInteger, HLCPopupLevel) {
+    HLCPopupLevelNormal = 0,
+    HLCPopupLevelLow
 };
 
-// KLCPopupLayout structure and maker functions
-struct KLCPopupLayout {
-    KLCPopupHorizontalLayout horizontal;
-    KLCPopupVerticalLayout vertical;
+// HLCPopupLayout structure and maker functions
+struct HLCPopupLayout {
+    HLCPopupHorizontalLayout horizontal;
+    HLCPopupVerticalLayout vertical;
 };
-typedef struct KLCPopupLayout   KLCPopupLayout;
+typedef struct HLCPopupLayout   HLCPopupLayout;
 
-extern KLCPopupLayout KLCPopupLayoutMake(KLCPopupHorizontalLayout horizontal, KLCPopupVerticalLayout vertical);
+extern HLCPopupLayout HLCPopupLayoutMake(HLCPopupHorizontalLayout horizontal, HLCPopupVerticalLayout vertical);
 
-extern const KLCPopupLayout KLCPopupLayoutCenter;
+extern const HLCPopupLayout HLCPopupLayoutCenter;
 
 
 
-@interface KLCPopup : UIView
+@interface HLCPopup : UIView
 
 // This is the view that you want to appear in Popup.
 // - Must provide contentView before or in willStartShowing.
@@ -114,13 +114,13 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 @property (nonatomic, strong) UIView *contentView;
 
 // Animation transition for presenting contentView. default = shrink in
-@property (nonatomic, assign) KLCPopupShowType showType;
+@property (nonatomic, assign) HLCPopupShowType showType;
 
 // Animation transition for dismissing contentView. default = shrink out
-@property (nonatomic, assign) KLCPopupDismissType dismissType;
+@property (nonatomic, assign) HLCPopupDismissType dismissType;
 
 // Mask prevents background touches from passing to underlying views. default = dimmed.
-@property (nonatomic, assign) KLCPopupMaskType maskType;
+@property (nonatomic, assign) HLCPopupMaskType maskType;
 
 // If YES, then popup will get dismissed when background is touched. default = YES.
 @property (nonatomic, assign) BOOL shouldDismissOnBackgroundTouch;
@@ -139,9 +139,9 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 
 // Convenience method for creating popup with custom values.
 + (instancetype)popupWithContentView:(UIView *)contentView
-                            showType:(KLCPopupShowType)showType
-                         dismissType:(KLCPopupDismissType)dismissType
-                            maskType:(KLCPopupMaskType)maskType
+                            showType:(HLCPopupShowType)showType
+                         dismissType:(HLCPopupDismissType)dismissType
+                            maskType:(HLCPopupMaskType)maskType
             dismissOnBackgroundTouch:(BOOL)shouldDismissOnBackgroundTouch
                dismissOnContentTouch:(BOOL)shouldDismissOnContentTouch;
 
@@ -152,13 +152,13 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 - (void)show;
 
 // Show with specified layout.
-- (void)showWithLayout:(KLCPopupLayout)layout;
+- (void)showWithLayout:(HLCPopupLayout)layout;
 
 // Show and then dismiss after duration. 0.0 or less will be considered infinity.
 - (void)showWithDuration:(NSTimeInterval)duration;
 
 // Show with layout and dismiss after duration.
-- (void)showWithLayout:(KLCPopupLayout)layout duration:(NSTimeInterval)duration;
+- (void)showWithLayout:(HLCPopupLayout)layout duration:(NSTimeInterval)duration;
 
 // Show centered at point in view's coordinate system. If view is nil use screen base coordinates.
 - (void)showAtCenter:(CGPoint)center inView:(UIView *)view;
@@ -172,7 +172,7 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 /*
  * 标识popup弹窗出现的层级，0表示在最顶层，1表示在第二层（最上层还有个Popup），以此类推
  */
-@property (nonatomic, assign) KLCPopupLevel popupLevel;
+@property (nonatomic, assign) HLCPopupLevel popupLevel;
 
 #pragma mark Subclassing
 @property (nonatomic, strong, readonly) UIView *backgroundView;
@@ -192,8 +192,8 @@ extern const KLCPopupLayout KLCPopupLayoutCenter;
 
 #pragma mark - UIView Category
 
-@interface UIView (KLCPopup)
-- (void)forEachPopupDoBlock:(void (^)(KLCPopup *popup))block;
+@interface UIView (HLCPopup)
+- (void)forEachPopupDoBlock:(void (^)(HLCPopup *popup))block;
 - (void)dismissPresentingPopup;
 @end
 
