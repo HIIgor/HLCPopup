@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "HLCPopup is a simple and flexible iOS class for presenting any custom view as a popup"
   s.homepage     = "https://github.com/HIIgor/HLCPopup"
   s.author       = {"HIIgor" => "http://HIIgor.com"}
-  s.source_files = 'KLCPopup', 'KLCPopup/*.{h,m}'
+  s.source_files = 'HLCPopup', 'HLCPopup/*.{h,m}'
   s.source       = {:git => 'https://github.com/HIIgor/HLCPopup.git', :tag => s.version.to_s}
   s.frameworks   = 'UIKit'
   s.requires_arc = true
